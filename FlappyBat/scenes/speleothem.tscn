@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm86vi4ny8dbx"]
+
+[ext_resource type="Texture2D" uid="uid://bhnyjm7uxci1f" path="res://assets/art/props1.png" id="1_e7j82"]
+
+[node name="Speleothem" type="Node2D"]
+
+[node name="stalagmite" type="Sprite2D" parent="."]
+position = Vector2(0, 289)
+scale = Vector2(1, 1.32639)
+texture = ExtResource("1_e7j82")
+centered = false
+region_enabled = true
+region_rect = Rect2(15.7571, 15.8012, 144.454, 144.441)
+
+[node name="stalactite" type="Sprite2D" parent="."]
+scale = Vector2(1, 1.09028)
+texture = ExtResource("1_e7j82")
+centered = false
+region_enabled = true
+region_rect = Rect2(15.8737, 175.727, 144.495, 144.455)
