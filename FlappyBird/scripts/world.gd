@@ -6,6 +6,8 @@ extends Node2D
 @onready var obstacle_spawner = $ObstacleSpawner
 @onready var ground = $Ground
 
+const SAVE_FILE_PATH = "user://savedata.tres"
+
 var score:
 	set(new_score):
 		score = new_score
@@ -13,7 +15,10 @@ var score:
 	get:
 		return score
 
+var high_score = 0
+
 func _ready():
+	load_score()
 	obstacle_spawner.obstacle_created.connect(_on_obstacle_created)
 	ground.collide.connect(end_game)
 	menu.start_game.connect(start_game)
@@ -29,10 +34,29 @@ func end_game():
 	ground.stop()
 	obstacle_spawner.stop()
 	get_tree().call_group("obstacles", "set_physics_process", false)
-	menu.show_game_over(self.score)
+	
+	# set the high score
+	if score > high_score:
+		high_score = score
+		save_score(high_score)
+	
+	menu.show_game_over(score, high_score)
 
 func player_score():
 	self.score += 1
+
+func save_score(new_score):
+	var save_game = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+	save_game.store_64(new_score)
+	save_game.close()
+
+func load_score():
+	if not FileAccess.file_exists(SAVE_FILE_PATH):
+		return # no file to load
+	
+	var save_game = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
+	high_score = save_game.get_64()
+	save_game.close()
 
 func _on_obstacle_created(obstacle):
 	obstacle.score.connect(player_score)

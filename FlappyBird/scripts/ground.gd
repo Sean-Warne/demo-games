@@ -22,5 +22,5 @@ func start():
 func stop():
 	started = false
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	collide.emit()

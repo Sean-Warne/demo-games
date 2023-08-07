@@ -18,8 +18,9 @@ func _input(event):
 		tween.tween_property(start_message, "modulate:a", 0, 0.5)
 		tween.play()
 
-func show_game_over(score):
-	score_label.text = "SCORE: " + str(score)
+func show_game_over(score, high_score):
+	score_label.text      = "SCORE: " + str(score)
+	high_score_label.text = "BEST:  " + str(high_score)
 	game_over_menu.visible = true
 
 func hide_game_over():

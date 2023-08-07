@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var animation_player = $AnimationPlayer
 @onready var sprite_2d = $Sprite2D
+@onready var flap_audio = $FlapAudio
+@onready var collide_audio = $CollideAudio
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -29,6 +31,7 @@ func stop():
 	if not dead:
 		dead = true
 		animation_player.stop()
+		collide_audio.play()
 
 func _physics_process(delta):
 	if started:
@@ -44,7 +47,9 @@ func handle_gravity(delta):
 
 func handle_flap():
 	if Input.is_action_just_pressed("Flap"):
-		velocity.y = JUMP_VELOCITY
+		if position.y > 30:
+			velocity.y = JUMP_VELOCITY
+			flap_audio.play()
 
 func handle_rotation():
 	if velocity.y < 0:
