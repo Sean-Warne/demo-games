@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvp2opfmgfc30"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_wbcay"]
+[ext_resource type="Texture2D" uid="uid://c08yn38ad75yf" path="res://assets/textures/message.png" id="1_wima8"]
+[ext_resource type="Texture2D" uid="uid://b6t6kbxgll76h" path="res://assets/textures/gameover.png" id="3_k1xq3"]
+[ext_resource type="FontFile" uid="uid://h6bydtqjhja1" path="res://assets/fonts/flappy_font_48.tres" id="3_vssg6"]
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_wbcay")
+
+[node name="StartMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartMessage" type="TextureRect" parent="StartMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -278.0
+offset_right = 138.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wima8")
+metadata/_edit_use_anchors_ = true
+
+[node name="GameOverMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="GameOverMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.0
+offset_top = 314.0
+offset_right = 144.0
+offset_bottom = 377.0
+grow_horizontal = 2
+texture = ExtResource("3_k1xq3")
+
+[node name="ScoresBox" type="VBoxContainer" parent="GameOverMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -18.0
+offset_right = 124.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreLabel" type="Label" parent="GameOverMenu/ScoresBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vssg6")
+theme_override_font_sizes/font_size = 48
+text = "SCORE: 0"
+horizontal_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="GameOverMenu/ScoresBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vssg6")
+theme_override_font_sizes/font_size = 48
+text = "BEST: 0"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="GameOverMenu"]
+layout_mode = 2
+offset_left = 116.0
+offset_top = 549.0
+offset_right = 364.0
+offset_bottom = 621.0
+theme_override_colors/font_color = Color(0, 0.576471, 0.113725, 1)
+theme_override_fonts/font = ExtResource("3_vssg6")
+theme_override_font_sizes/font_size = 48
+text = "RESTART"
+
+[connection signal="pressed" from="GameOverMenu/RestartButton" to="." method="_on_restart_button_pressed"]

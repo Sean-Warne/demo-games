@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://dr2omhfansk4l"]
 
-[ext_resource type="Script" path="res://scenes/obstacle.gd" id="1_85mbq"]
+[ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_1mfde"]
 [ext_resource type="PackedScene" uid="uid://byqxfcnbp4xqe" path="res://scenes/wall.tscn" id="1_bcao2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5k5h0"]
-size = Vector2(20, 195)
+size = Vector2(49, 195)
 
-[node name="Obstacle" type="Node2D"]
+[node name="Obstacle" type="Node2D" groups=["obstacles"]]
 position = Vector2(0, 427)
-script = ExtResource("1_85mbq")
+script = ExtResource("1_1mfde")
 
 [node name="Top" parent="." instance=ExtResource("1_bcao2")]
 position = Vector2(0, 75)
@@ -21,7 +21,7 @@ rotation = 3.14159
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreZone"]
-position = Vector2(0, -0.5)
+position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_5k5h0")
 
 [connection signal="body_entered" from="Top" to="." method="_on_obstacle_body_entered"]

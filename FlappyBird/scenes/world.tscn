@@ -1,28 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://had4g8o7vby3"]
+[gd_scene load_steps=8 format=3 uid="uid://cnujw6elmx2tt"]
 
-[ext_resource type="Script" path="res://scenes/world.gd" id="1_pi2wc"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_eq7hi"]
 [ext_resource type="Texture2D" uid="uid://b0tvcy65aeqmd" path="res://assets/textures/background.png" id="1_qowtl"]
 [ext_resource type="PackedScene" uid="uid://bv58ryw6tdc4h" path="res://scenes/player.tscn" id="2_bm2l4"]
+[ext_resource type="PackedScene" uid="uid://bvp2opfmgfc30" path="res://scenes/menu.tscn" id="3_ejt0t"]
+[ext_resource type="PackedScene" uid="uid://ikiii7bia0kv" path="res://scenes/obstacle_spawner.tscn" id="3_g2trf"]
 [ext_resource type="PackedScene" uid="uid://chkn5yupanl8a" path="res://scenes/ground.tscn" id="3_w734i"]
+[ext_resource type="PackedScene" uid="uid://534d8daxjgnt" path="res://scenes/hud.tscn" id="6_eovna"]
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_pi2wc")
+script = ExtResource("1_eq7hi")
+
+[node name="Menu" parent="." instance=ExtResource("3_ejt0t")]
+
+[node name="HUD" parent="." instance=ExtResource("6_eovna")]
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(240, 427)
 texture = ExtResource("1_qowtl")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 62.0
-offset_top = 625.0
-offset_right = 205.0
-offset_bottom = 666.0
-text = "START"
-
-[node name="Player" parent="." instance=ExtResource("2_bm2l4")]
-position = Vector2(115, 420)
+[node name="ObstacleSpawner" parent="." instance=ExtResource("3_g2trf")]
+position = Vector2(500, 0)
 
 [node name="Ground" parent="." instance=ExtResource("3_w734i")]
 position = Vector2(0, 686)
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Player" parent="." instance=ExtResource("2_bm2l4")]
+position = Vector2(115, 420)

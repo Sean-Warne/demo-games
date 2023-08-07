@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://ikiii7bia0kv"]
+[gd_scene load_steps=2 format=3 uid="uid://ikiii7bia0kv"]
+
+[ext_resource type="Script" path="res://scripts/obstacle_spawner.gd" id="1_i0s30"]
 
 [node name="ObstacleSpawner" type="Node2D"]
+script = ExtResource("1_i0s30")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
