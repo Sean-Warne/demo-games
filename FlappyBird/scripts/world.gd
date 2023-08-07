@@ -1,12 +1,12 @@
 extends Node2D
 
+const SAVE_FILE_PATH = "user://savedata.tres"
+
 @onready var menu = $Menu
 @onready var hud = $HUD
 @onready var player = $Player
 @onready var obstacle_spawner = $ObstacleSpawner
 @onready var ground = $Ground
-
-const SAVE_FILE_PATH = "user://savedata.tres"
 
 var score:
 	set(new_score):
