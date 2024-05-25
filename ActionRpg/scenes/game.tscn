@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d04ktw0o1asl1"]
+[gd_scene load_steps=3 format=3 uid="uid://sp03bn12vus4"]
 
 [ext_resource type="Texture2D" uid="uid://c4d7nx3bfs1vm" path="res://assets/World/Bush.png" id="1_ycihd"]
 [ext_resource type="PackedScene" uid="uid://cwfj0t7pm2evj" path="res://scenes/player.tscn" id="2_shjxa"]
