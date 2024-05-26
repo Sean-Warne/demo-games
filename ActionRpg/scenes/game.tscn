@@ -1,13 +1,29 @@
 [gd_scene load_steps=3 format=3 uid="uid://sp03bn12vus4"]
 
-[ext_resource type="Texture2D" uid="uid://c4d7nx3bfs1vm" path="res://assets/World/Bush.png" id="1_ycihd"]
 [ext_resource type="PackedScene" uid="uid://cwfj0t7pm2evj" path="res://scenes/player.tscn" id="2_shjxa"]
+[ext_resource type="PackedScene" uid="uid://djpohs3sewlj8" path="res://scenes/bush.tscn" id="2_xy2d8"]
 
 [node name="Game" type="Node2D"]
-
-[node name="Bush" type="Sprite2D" parent="."]
-position = Vector2(39, 35)
-texture = ExtResource("1_ycihd")
+y_sort_enabled = true
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_shjxa")]
-position = Vector2(67, 100)
+position = Vector2(35, 64)
+
+[node name="Bushes" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Bush" parent="Bushes" instance=ExtResource("2_xy2d8")]
+position = Vector2(74, 35)
+
+[node name="Bush2" parent="Bushes" instance=ExtResource("2_xy2d8")]
+position = Vector2(195, 32)
+
+[node name="Bush3" parent="Bushes" instance=ExtResource("2_xy2d8")]
+position = Vector2(277, 101)
+
+[node name="Bush4" parent="Bushes" instance=ExtResource("2_xy2d8")]
+position = Vector2(66, 88)
+
+[node name="Bush5" parent="Bushes" instance=ExtResource("2_xy2d8")]
+position = Vector2(166, 140)
