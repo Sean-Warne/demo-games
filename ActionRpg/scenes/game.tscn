@@ -806,15 +806,19 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_nqbxe"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.645731, 0.210059, 0.250164, 1)
 sources/0 = SubResource("TileSetAtlasSource_s3csg")
 
 [node name="Game" type="Node2D"]
+y_sort_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="GrassBackground" type="Sprite2D" parent="."]
+z_index = -1
+y_sort_enabled = true
 texture_repeat = 2
 position = Vector2(160, 90)
 texture = ExtResource("3_3les8")
@@ -833,39 +837,6 @@ layer_0/tile_data = PackedInt32Array(196604, 65536, 2, 131068, 327680, 2, 65532,
 
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
-
-[node name="Bushes" type="Node2D" parent="YSort"]
-y_sort_enabled = true
-
-[node name="Bush" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
-position = Vector2(74, 48)
-
-[node name="Bush2" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
-position = Vector2(190, 31)
-
-[node name="Bush3" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
-position = Vector2(295, 106)
-
-[node name="Bush4" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
-position = Vector2(39, 68)
-
-[node name="Bush5" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
-position = Vector2(183, 180)
-
-[node name="Bush6" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
-position = Vector2(430, 51)
-
-[node name="Bush7" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
-position = Vector2(434, 175)
-
-[node name="Bush8" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
-position = Vector2(453, 151)
-
-[node name="Bush9" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
-position = Vector2(485, 167)
-
-[node name="Bush10" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
-position = Vector2(-16, -59)
 
 [node name="Grasses" type="Node2D" parent="YSort"]
 y_sort_enabled = true
@@ -995,6 +966,39 @@ position = Vector2(80, 289)
 
 [node name="Grass38" parent="YSort/Grasses" instance=ExtResource("6_ehyjt")]
 position = Vector2(96, 289)
+
+[node name="Bushes" type="Node2D" parent="YSort"]
+y_sort_enabled = true
+
+[node name="Bush" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
+position = Vector2(74, 48)
+
+[node name="Bush2" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
+position = Vector2(190, 31)
+
+[node name="Bush3" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
+position = Vector2(295, 106)
+
+[node name="Bush4" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
+position = Vector2(39, 68)
+
+[node name="Bush5" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
+position = Vector2(183, 180)
+
+[node name="Bush6" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
+position = Vector2(430, 51)
+
+[node name="Bush7" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
+position = Vector2(434, 175)
+
+[node name="Bush8" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
+position = Vector2(453, 151)
+
+[node name="Bush9" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
+position = Vector2(485, 167)
+
+[node name="Bush10" parent="YSort/Bushes" instance=ExtResource("2_xy2d8")]
+position = Vector2(-16, -59)
 
 [node name="Player" parent="YSort" instance=ExtResource("2_shjxa")]
 position = Vector2(160, 90)
