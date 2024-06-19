@@ -813,7 +813,6 @@ terrain_set_0/terrain_0/color = Color(0.645731, 0.210059, 0.250164, 1)
 sources/0 = SubResource("TileSetAtlasSource_s3csg")
 
 [node name="Game" type="Node2D"]
-y_sort_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="GrassBackground" type="Sprite2D" parent="."]

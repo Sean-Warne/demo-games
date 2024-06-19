@@ -7,6 +7,8 @@ const FRICTION = 600.0
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
 
+var player_collide = false
+
 enum {
 	MOVE,
 	ROLL,
@@ -22,6 +24,8 @@ func _ready():
 
 func move_state(delta):
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+
+	print(player_collide)
 
 	if direction:
 		animation_tree.set("parameters/Idle/blend_position", direction)
@@ -43,18 +47,19 @@ func move_state(delta):
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
 
-	if Input.is_action_just_pressed("roll"):
+	if Input.is_action_just_pressed("roll") and direction != Vector2.ZERO:
 		state = ROLL
 
+	player_collide = move_and_slide()
+
+func roll_state():
+	animation_state.travel("Roll")
+	velocity = velocity 
 	move_and_slide()
 
 func attack_state(delta):
 	animation_state.travel("Attack")
 	velocity = velocity.move_toward(Vector2.ZERO, 300 * delta)
-	move_and_slide()
-
-func roll_state():
-	animation_state.travel("Roll")
 	move_and_slide()
 
 func attack_finished():
