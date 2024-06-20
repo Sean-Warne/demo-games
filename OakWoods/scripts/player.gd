@@ -2,13 +2,18 @@ extends CharacterBody2D
 
 
 const SPEED = 150.0
-const JUMP_VELOCITY = -250.0
+const JUMP_VELOCITY = -300.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_jumping = false
 
-@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var sprite_2d = $Sprite2D
+@onready var animation_tree = $AnimationTree
+@onready var animation_state = animation_tree.get("parameters/playback")
+
+func _ready():
+	animation_tree.active = true
 
 func _physics_process(delta):
 	var direction = Input.get_axis("run_left", "run_right")
@@ -18,22 +23,18 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		animated_sprite_2d.play("jump")
-	elif direction:
+		
+	if direction:
 		velocity.x = direction * SPEED
-
-		if is_on_floor():
-			animated_sprite_2d.play("run")
-
+		
 		if direction < 0:
-			animated_sprite_2d.flip_h = true
+			sprite_2d.flip_h = true
 		else:
-			animated_sprite_2d.flip_h = false
+			sprite_2d.flip_h = false
+		
+		animation_state.travel("run")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-		# only play idle animation if not moving and run animation is playing (looping)
-		if animated_sprite_2d.animation == "run":
-			animated_sprite_2d.play("idle")
-
+		animation_state.travel("idle")
+	
 	move_and_slide()
