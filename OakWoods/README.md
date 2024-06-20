@@ -9,8 +9,10 @@ A short but complete platformer demo using free assets.
 Applying skills learned from previous tutorials to create a simple platformer.
 
 Scope:
-- Background and world art
-- Animated character with running, jumping, attacking, and death animations
+- (DONE) Background / Parallax 
+- (DONE) World tileset
+- Environment assets
+- (DONE) Animated character with running, jumping, attacking, and death animations
 - 1-2 playable levels
 - Background music and sounds
 - UI
