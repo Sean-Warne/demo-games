@@ -58,6 +58,9 @@ func move(delta):
 	if Input.is_action_just_pressed("attack") and is_on_floor():
 		state = ATTACK
 	
+	if velocity.y > 0:
+		state = FALL
+	
 	move_and_slide()
 
 func move_state():
@@ -76,9 +79,7 @@ func jump_state():
 			state = FALL
 
 func fall_state():
-	if velocity.y > 0:
-		animation_state.travel("fall")
-	
+	animation_state.travel("fall")
 	if is_on_floor():
 		state = MOVE
 

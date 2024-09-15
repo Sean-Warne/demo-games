@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://hmlrex3oc4x1"]
+[gd_scene load_steps=30 format=3 uid="uid://hmlrex3oc4x1"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8k3kv"]
 [ext_resource type="Texture2D" uid="uid://q728vxh1c5a2" path="res://assets/character/char_blue.png" id="1_yb3m0"]
@@ -183,6 +183,8 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y8akx"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ywfsq"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_i826m"]
 states/End/position = Vector2(806, 100)
 states/attack/node = SubResource("AnimationNodeAnimation_cjceb")
@@ -195,8 +197,8 @@ states/jump/node = SubResource("AnimationNodeAnimation_t4k4v")
 states/jump/position = Vector2(436, -66)
 states/run/node = SubResource("AnimationNodeAnimation_f5i31")
 states/run/position = Vector2(622, 100)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_nk8c3"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_i1gg8"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_o2cet"), "run", "End", SubResource("AnimationNodeStateMachineTransition_xd6nc"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_037ng"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_dr4hb"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_r0wsw"), "fall", "run", SubResource("AnimationNodeStateMachineTransition_pjyja"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_ou5bm"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_swkr2"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_y8akx")]
-graph_offset = Vector2(-531, 35)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_nk8c3"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_i1gg8"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_o2cet"), "run", "End", SubResource("AnimationNodeStateMachineTransition_xd6nc"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_037ng"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_dr4hb"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_r0wsw"), "fall", "run", SubResource("AnimationNodeStateMachineTransition_pjyja"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_ou5bm"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_swkr2"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_y8akx"), "run", "fall", SubResource("AnimationNodeStateMachineTransition_ywfsq")]
+graph_offset = Vector2(-292, -99)
 
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
